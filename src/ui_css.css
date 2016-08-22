@@ -1,0 +1,16 @@
+#ui{
+	 background-color: yellow;
+	 width: 100px;
+	 height: 100px;
+	 margin-bottom: 0px;
+	
+}
+
+#ui_2{
+	display: inline-block;
+	margin-top: 0px;
+	background-color: red;
+	width: 100px;
+	height: 100px;
+
+}

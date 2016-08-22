@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+	
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 600px;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 80%;
+      }
+    </style>
+  </head>
+  <body>
+	<p id='time'>Time</p>
+    <div id="map"></div>
+	
+	<script src="pop.js"></script>
+	<script src="World.js"></script>
+    <script>
+      var map;
+	  var pop = 0;
+	  var direction = getRandomInt(1, 4);
+	  var thePlayer;
+	  
+	  
+	  
+	  function Person(title){
+		this.title = title;
+	  }
+	  
+	  function newHorse(){
+		var horse = {
+			name: "Great Horse"
+		}
+		
+		return horse;
+	  }
+	  
+	 
+	  function myTimer()
+	  {
+		pop = pop + 1;
+		document.getElementById('time').innerHTML = pop;
+		
+		
+		//moveUp(thePlayer);
+		
+		
+		
+		
+		//marker.position.lat = marker.position.lat + 0.01;
+		
+	
+	  }
+	  
+      function init() 
+	  {
+		//boxTitle();
+		var marker = new google.maps.Marker({
+			position: {lat: -37.814214, lng: 144.960078},
+			map: map,
+			title: 'Hello World!'
+		});
+		
+		//thePlayer = newEnemy();
+		//boxTitle();
+		//alert(97364);
+		
+		var goblin = newGoblin();
+		var goblin2 = newGoblin();
+		
+		goblin2.stats.hp -= 10;
+		
+		goblin.location = marker;
+		
+		alert(goblin.stats.hp + " & " + goblin2.stats.hp);
+		
+		
+		
+		
+		
+		//window.open("second.html");
+		
+		
+		google.maps.event.addDomListener(document, 'keydown', function (e) {
+
+		var code = (e.keyCode ? e.keyCode : e.which);
+		
+		
+		if(code == 87){
+			
+		}
+		if(code == 83){
+			
+		}
+		if(code == 68){
+			
+		}
+		if(code == 65){
+			
+		}
+		
+		});
+
+		
+		 var styledMapType = new google.maps.StyledMapType(
+          [
+			{
+			"featureType": "all",
+			"stylers": [
+				{visibility: 'off' }
+			]
+			},
+			{
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [
+                { hue: '#000d1a' },
+				{visibility: 'on' }
+				
+              ]
+            },
+			{
+				featureType: 'landscape.natural',
+				elementType: 'geometry',
+				stylers: [
+                { hue: '#001a00' },
+                { saturation: 100 },
+				{visibility: 'on' }
+
+				
+              ]
+			}
+			
+			
+          ],
+          {name: 'Styled Map'});
+	  
+        map = new google.maps.Map(document.getElementById('map'), {
+		
+          center: {lat: -37.814214, lng: 144.960078},
+          zoom: 15
+        });
+		
+		
+		
+		marker.setMap(map);
+		
+		map.mapTypes.set('styled_map', styledMapType);
+        map.setMapTypeId('styled_map');
+		
+		var myVar = setInterval(myTimer, 1000);
+      }
+	  
+	
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPxZRxMU6lK8wlW9JzwPVNmPobmLteAyk&callback=init"
+    async defer></script>
+	
+	
+	<object type="text/html" data="ui.html"></object>
+	
+	
+  </body>
+</html>
