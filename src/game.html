@@ -21,34 +21,27 @@
     <div id="map"></div>
 	
 	<script src="pop.js"></script>
+	<script src="Const.js"></script>
+	<script src="GameObjects.js"></script>
 	<script src="WorldBuilder.js"></script>
+	<script src="Player.js"></script>
+	<script src="World.js"></script>
 	<script src="Gui.js"></script>
+	
+	<script src="worlds/Melbourne.js"></script>
     <script>
-      var map;
+      var world;
 	  var pop = 0;
 	  var direction = getRandomInt(1, 4);
 	  var thePlayer;
 	  
-	  
-	  
-	  function Person(title){
-		this.title = title;
-	  }
-	  
-	  function newHorse(){
-		var horse = {
-			name: "Great Horse"
-		}
-		
-		return horse;
-	  }
-	  
-	 
+	  	 
 	  function gameTick()
 	  {
+		tickWorld(world);
 		pop = pop + 1;
 		document.getElementById('time').innerHTML = pop;
-
+		
 		
 	  }
 	  
@@ -62,31 +55,34 @@
 		var code = (e.keyCode ? e.keyCode : e.which);
 		
 		
-		if(code == 87){
-			
+		if(code == KEY_W){
+			console.log("Up");
 		}
-		if(code == 83){
-			
+		if(code == KEY_A){
+			console.log("Left");
 		}
-		if(code == 68){
-			
+		if(code == KEY_S){
+			console.log("Down");
 		}
-		if(code == 65){
-			
+		if(code == KEY_D){
+			console.log("Right");
 		}
 		
 		});
 		
 		
 		
-		 map = new google.maps.Map(document.getElementById('map'), {
+		 var map = new google.maps.Map(document.getElementById('map'), {
 		
           center: {lat: -37.814214, lng: 144.960078},
           zoom: 15
         });
-	
+		
+		world = newWorld(map);
+		
+		
 		initGui(map);
-		buildWorld(map);
+		buildWorld(world);
 		//marker.setMap(map);
 		
 		

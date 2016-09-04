@@ -6,6 +6,4 @@ function newStats(health, defence, attack)
 		health : health,
 		defence : defence
 	};
-		
-	
 }
