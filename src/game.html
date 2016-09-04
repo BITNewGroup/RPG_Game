@@ -21,7 +21,8 @@
     <div id="map"></div>
 	
 	<script src="pop.js"></script>
-	<script src="World.js"></script>
+	<script src="WorldBuilder.js"></script>
+	<script src="Gui.js"></script>
     <script>
       var map;
 	  var pop = 0;
@@ -43,48 +44,16 @@
 	  }
 	  
 	 
-	  function myTimer()
+	  function gameTick()
 	  {
 		pop = pop + 1;
 		document.getElementById('time').innerHTML = pop;
+
 		
-		
-		//moveUp(thePlayer);
-		
-		
-		
-		
-		//marker.position.lat = marker.position.lat + 0.01;
-		
-	
 	  }
 	  
       function init() 
 	  {
-		//boxTitle();
-		var marker = new google.maps.Marker({
-			position: {lat: -37.814214, lng: 144.960078},
-			map: map,
-			title: 'Hello World!'
-		});
-		
-		//thePlayer = newEnemy();
-		//boxTitle();
-		//alert(97364);
-		
-		var goblin = newGoblin();
-		var goblin2 = newGoblin();
-		
-		goblin2.stats.hp -= 10;
-		
-		goblin.location = marker;
-		
-		alert(goblin.stats.hp + " & " + goblin2.stats.hp);
-		
-		
-		
-		
-		
 		//window.open("second.html");
 		
 		
@@ -107,55 +76,22 @@
 		}
 		
 		});
-
 		
-		 var styledMapType = new google.maps.StyledMapType(
-          [
-			{
-			"featureType": "all",
-			"stylers": [
-				{visibility: 'off' }
-			]
-			},
-			{
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [
-                { hue: '#000d1a' },
-				{visibility: 'on' }
-				
-              ]
-            },
-			{
-				featureType: 'landscape.natural',
-				elementType: 'geometry',
-				stylers: [
-                { hue: '#001a00' },
-                { saturation: 100 },
-				{visibility: 'on' }
-
-				
-              ]
-			}
-			
-			
-          ],
-          {name: 'Styled Map'});
-	  
-        map = new google.maps.Map(document.getElementById('map'), {
+		
+		
+		 map = new google.maps.Map(document.getElementById('map'), {
 		
           center: {lat: -37.814214, lng: 144.960078},
           zoom: 15
         });
+	
+		initGui(map);
+		buildWorld(map);
+		//marker.setMap(map);
 		
 		
 		
-		marker.setMap(map);
-		
-		map.mapTypes.set('styled_map', styledMapType);
-        map.setMapTypeId('styled_map');
-		
-		var myVar = setInterval(myTimer, 1000);
+		var myVar = setInterval(gameTick, 1000);
       }
 	  
 	
