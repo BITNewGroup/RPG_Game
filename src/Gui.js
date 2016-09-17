@@ -13,7 +13,7 @@ function initGoogleMap(map)
               featureType: 'water',
               elementType: 'geometry',
               stylers: [
-                { hue: '#000d1a' },
+                { hue: COLOR_WATER },
 				{visibility: 'on' }
 				
               ]
@@ -22,7 +22,7 @@ function initGoogleMap(map)
 				featureType: 'landscape.natural',
 				elementType: 'geometry',
 				stylers: [
-                { hue: '#001a00' },
+                { hue: COLOR_LANDSCAPE },
                 { saturation: 100 },
 				{visibility: 'on' }
               ]

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
+    <title>RPG</title>
 	
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
@@ -12,87 +12,90 @@
         padding: 0;
       }
       #map {
-        height: 80%;
+        height: 85%;
       }
     </style>
   </head>
   <body>
-	<p id='time'>Time</p>
     <div id="map"></div>
 	
-	<script src="pop.js"></script>
+	<script src="worlds/Melbourne.js"></script>
+	<script src="Actions.js"></script>
 	<script src="Const.js"></script>
-	<script src="GameObjects.js"></script>
 	<script src="WorldBuilder.js"></script>
 	<script src="Player.js"></script>
 	<script src="World.js"></script>
+	<script src="Util.js"></script>
 	<script src="Gui.js"></script>
+	<script src="maplabel.js"></script>
 	
-	<script src="worlds/Melbourne.js"></script>
+	<script src="Tony.js"></script>
+	<script src="Hang.js"></script>
+	
     <script>
-      var world;
-	  var pop = 0;
-	  var direction = getRandomInt(1, 4);
-	  var thePlayer;
-	  
-	  	 
-	  function gameTick()
+		var world;
+		
+	  function onTick()
 	  {
-		tickWorld(world);
-		pop = pop + 1;
-		document.getElementById('time').innerHTML = pop;
-		
-		
+			
 	  }
-	  
+		
+		
       function init() 
 	  {
-		//window.open("second.html");
-		
-		
-		google.maps.event.addDomListener(document, 'keydown', function (e) {
+		//Key Listener
+		google.maps.event.addDomListener(document, 'keydown', function (e)
+		{
 
-		var code = (e.keyCode ? e.keyCode : e.which);
+			var code = (e.keyCode ? e.keyCode : e.which);
 		
-		
-		if(code == KEY_W){
-			console.log("Up");
-		}
-		if(code == KEY_A){
-			console.log("Left");
-		}
-		if(code == KEY_S){
-			console.log("Down");
-		}
-		if(code == KEY_D){
-			console.log("Right");
-		}
-		
-		});
+			console.log("code: " + code);
 		
 		
 		
-		 var map = new google.maps.Map(document.getElementById('map'), {
+			if(code == KEY_W){
+				movePlayer(world, DIRECTION_UP);
+			}
+			if(code == KEY_A)
+			{
+				movePlayer(world, DIRECTION_LEFT);
+			}
+			if(code == KEY_S)
+			{
+				movePlayer(world, DIRECTION_DOWN);
+			}
+			if(code == KEY_D)
+			{
+				movePlayer(world, DIRECTION_RIGHT);
+			}
+		
+		 
+        });
+		
+		map = new google.maps.Map(document.getElementById('map'), {
 		
           center: {lat: -37.814214, lng: 144.960078},
           zoom: 15
         });
 		
 		world = newWorld(map);
-		
-		
 		initGui(map);
 		buildWorld(world);
-		//marker.setMap(map);
+		//build each members sandbox data
+		buildTony(world);
+		buildHang(world);
+		
+		newPlayer(world, -37.814214, 144.960078);
+		
+		var myVar = setInterval(onTick, 1000);
+	}
+
 		
 		
-		
-		var myVar = setInterval(gameTick, 1000);
-      }
 	  
 	
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPxZRxMU6lK8wlW9JzwPVNmPobmLteAyk&callback=init"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPxZRxMU6lK8wlW9JzwPVNmPobmLteAyk&libraries=places&callback=init"
     async defer></script>
 	
 	

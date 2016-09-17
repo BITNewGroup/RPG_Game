@@ -1,0 +1,32 @@
+
+1)
+Finished the formulas for the attack system,
+Built the UI design
+Core Game loop, including a timer
+
+Build the first resource in the Game
+Built
+Building the GUI adapter between the game data and and UI
+File strucure
+
+2)
+Challanges
+
+Testing the code, we are currently using a note editor,
+game
+
+Collaboration on GitHub, assigning each memeber tasks 
+and 
+
+
+
+
+3)
+add more resources,
+get player movement,   and ability to interact with game objects
+
+4)
+
+Work faster
+
+

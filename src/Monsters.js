@@ -10,9 +10,20 @@ var DRAGON_ATTACK = 40;
 var DRAGON_DEFENCE = 55;
 
 
-function spawnGoblin(world, spawner)
+/*
+	How to call new stats function
+	
+	newStats(health, attack, defence);
+
+*/
+
+function newGoblib(world, spawner, lat, lng)
 {
 	var goblin = {
-		stats : newStats(70, 12, 5)
+		stats : newStats(70, 12, 5),
+		
 	};
 }
+
+
+
